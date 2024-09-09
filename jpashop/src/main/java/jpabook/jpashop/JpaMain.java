@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import jpabook.jpashop.domain.Book;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderItem;
 
@@ -20,8 +21,8 @@ public class JpaMain {
 
         try {
 
-            Order order = new Order();
-            order.addOrderItem(new OrderItem());
+//            Order order = new Order();
+//            order.addOrderItem(new OrderItem());
 
             // 양방향 연관관계가 아닐경우
 //            Order order1 = new Order();
@@ -31,6 +32,15 @@ public class JpaMain {
 //            orderItem.setOrder(order);
 //
 //            em.persist(orderItem);
+
+
+            // 상속 관계 매핑
+            {
+                Book book = new Book();
+                book.setName("JPA");
+                book.setAuthor("김영한");
+                em.persist(book);
+            }
 
             tx.commit();
         } catch (Exception e) {
